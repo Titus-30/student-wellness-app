@@ -222,17 +222,26 @@ Our app uses carefully selected colors that promote mental wellness:
 
 ## 📱 App Screenshots
 
-<img width="1080" height="2340" alt="Screenshot_20250719_230611" src="https://github.com/user-attachments/assets/a5b95115-734b-40a9-94f7-a49f30b9edd0" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230726" src="https://github.com/user-attachments/assets/5d02682d-7d68-4c25-9b4d-ed0594dc191c" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230751" src="https://github.com/user-attachments/assets/905f4a0b-bdfa-4201-9909-d10d801aed1c" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230853" src="https://github.com/user-attachments/assets/c37dbd72-826b-4e77-86a0-8e14c02d5f46" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230005" src="https://github.com/user-attachments/assets/fa1202f3-d411-421b-be3e-b5a1aea59d92" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230127" src="https://github.com/user-attachments/assets/2dedbe54-697b-48ca-9bfd-92ad0ed7c388" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230156" src="https://github.com/user-attachments/assets/329ec405-b482-4981-9587-457f1e4a5c8a" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230211" src="https://github.com/user-attachments/assets/3fb0baf9-f95a-4e9c-81cb-28c52c6e1425" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230258" src="https://github.com/user-attachments/assets/50b6e133-e6e6-4282-a0d9-ccd8ea6380f7" />
-<img width="1080" height="2340" alt="Screenshot_20250719_230533" src="https://github.com/user-attachments/assets/23a1296b-04ca-400f-90e9-9ca56455cc45" />
+<div align="center">
 
+### 🏠 Main Dashboard & Authentication
+<img width="250" alt="Home Screen" src="https://github.com/user-attachments/assets/fa1202f3-d411-421b-be3e-b5a1aea59d92" />
+<img width="250" alt="Login Screen" src="https://github.com/user-attachments/assets/2dedbe54-697b-48ca-9bfd-92ad0ed7c388" />
+<img width="250" alt="Profile Setup" src="https://github.com/user-attachments/assets/329ec405-b482-4981-9587-457f1e4a5c8a" />
+
+### 🎭 Mood Tracking & Journal
+<img width="250" alt="Mood Tracking" src="https://github.com/user-attachments/assets/3fb0baf9-f95a-4e9c-81cb-28c52c6e1425" />
+<img width="250" alt="Journal Entry" src="https://github.com/user-attachments/assets/50b6e133-e6e6-4282-a0d9-ccd8ea6380f7" />
+<img width="250" alt="Meditation Screen" src="https://github.com/user-attachments/assets/23a1296b-04ca-400f-90e9-9ca56455cc45" />
+
+### 💬 Chat & Emergency Support
+<img width="250" alt="Chat Interface" src="https://github.com/user-attachments/assets/734b-40a9-94f7-a49f30b9edd0" />
+<img width="250" alt="Emergency Resources" src="https://github.com/user-attachments/assets/5d02682d-7d68-4c25-9b4d-ed0594dc191c" />
+<img width="250" alt="Settings" src="https://github.com/user-attachments/assets/905f4a0b-bdfa-4d-9909-d10d801aed1c" />
+
+</div>
+
+> **Note:** Screenshots showcase the clean, intuitive interface designed specifically for student mental wellness needs.
 
 ---
 
