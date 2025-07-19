@@ -8,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Placeholder user data
     final String avatarUrl = '';
-    final String displayName = 'Kalis Mutabazi';
+    final String displayName = 'Titus Mucyo';
     final String university = 'Adventiste University of Central Africa';
     final List<String> interests = ['Anxiety', 'Sleep', 'Relationships'];
 
