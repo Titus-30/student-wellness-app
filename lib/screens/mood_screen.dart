@@ -20,6 +20,16 @@ class _MoodScreenState extends State<MoodScreen> {
     'Happy', 'Sad', 'Angry', 'Anxious', 'Tired', 'Excited', 'Peaceful'
   ];
 
+  final Map<String, IconData> moodIcons = {
+    'Happy': Icons.sentiment_satisfied_alt,
+    'Sad': Icons.sentiment_dissatisfied,
+    'Angry': Icons.sentiment_very_dissatisfied,
+    'Anxious': Icons.sentiment_neutral,
+    'Tired': Icons.bedtime,
+    'Excited': Icons.emoji_events,
+    'Peaceful': Icons.self_improvement,
+  };
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -44,7 +54,14 @@ class _MoodScreenState extends State<MoodScreen> {
               children: moodTypes.map((mood) {
                 final isSelected = selectedMood == mood;
                 return ChoiceChip(
-                  label: Text(mood),
+                  label: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(moodIcons[mood], size: 18, color: isSelected ? Colors.white : Colors.black54),
+                      const SizedBox(width: 6),
+                      Text(mood),
+                    ],
+                  ),
                   selected: isSelected,
                   selectedColor: Colors.blueAccent.shade100,
                   backgroundColor: Colors.grey.shade200,
@@ -125,7 +142,18 @@ class _MoodScreenState extends State<MoodScreen> {
                     );
 
                     Provider.of<MoodProvider>(context, listen: false).addMood(mood);
-                    Navigator.pop(context);
+
+                    // Clear inputs & reset
+                    setState(() {
+                      selectedMood = null;
+                      intensity = 3;
+                      _notesController.clear();
+                    });
+
+                    // Show confirmation snackbar
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Mood saved!')),
+                    );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Please select a mood')),

@@ -11,9 +11,9 @@ class LoginScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF667EEA), Color(0xFF64B6FF)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            colors: [Color(0xFF0F2027), Color(0xFF2C5364)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Center(
@@ -22,12 +22,12 @@ class LoginScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 30),
               padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.9),
+                color: Colors.white.withOpacity(0.95),
                 borderRadius: BorderRadius.circular(25),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 20,
+                    color: Colors.black26,
+                    blurRadius: 15,
                     offset: const Offset(0, 10),
                   ),
                 ],
@@ -35,62 +35,60 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Avatar Icon
                   Container(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(18),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF64B6FF).withOpacity(0.3),
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF36D1DC), Color(0xFF5B86E5)],
+                      ),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
-                      Icons.lock_outline,
+                      Icons.lock_open_rounded,
                       size: 60,
-                      color: Color(0xFF4A90E2),
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 25),
 
-                  // Title
                   const Text(
-                    'Welcome Back',
+                    'Welcome to WellNest',
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 26,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF333333),
+                      color: Color(0xFF222222),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 10),
 
-                  // Subtitle
                   const Text(
-                    'Sign in anonymously to get started',
+                    'Log in anonymously to access wellness tools and peer support.',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Color(0xFF666666),
+                      color: Color(0xFF555555),
                     ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 30),
 
-                  // Login Button
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF36D1DC),
+                      foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      elevation: 10,
-                      backgroundColor: const Color(0xFF4A90E2),
+                      elevation: 8,
                       shadowColor: Colors.black54,
                       textStyle: const TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.2,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     onPressed: () =>
                         Provider.of<AuthProvider>(context, listen: false).signInAnonymously(),
-                    child: const Text('Login Anonymously'),
+                    child: const Text('Log In Anonymously'),
                   ),
                 ],
               ),

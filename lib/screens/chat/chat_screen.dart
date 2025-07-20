@@ -23,10 +23,11 @@ class ChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(peerName),
+        centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF667EEA), Color(0xFF64B6FF)],
+              colors: [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -37,7 +38,7 @@ class ChatScreen extends StatelessWidget {
             icon: const Icon(Icons.report),
             tooltip: 'Report',
             onPressed: () {
-              // TODO: Show report dialog or functionality
+              // TODO: Implement report feature
             },
           ),
         ],
@@ -45,7 +46,7 @@ class ChatScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFE3F2FD), Colors.white],
+            colors: [Color(0xFFF5F7FA), Color(0xFFE8F0FF)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -53,10 +54,10 @@ class ChatScreen extends StatelessWidget {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(10),
               child: Text(
                 'This chat is anonymous. Be kind and supportive.',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: Colors.grey, fontSize: 13),
               ),
             ),
             Expanded(
@@ -79,7 +80,7 @@ class ChatScreen extends StatelessWidget {
                   }
                   return const Center(
                     child: CircularProgressIndicator(
-                      color: Color(0xFF64B6FF),
+                      color: Color(0xFF36D1DC),
                     ),
                   );
                 },
@@ -105,8 +106,8 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = isMe ? const Color(0xFF4A90E2) : const Color(0xFFE1E8FF);
-    final textColor = isMe ? Colors.white : Colors.black87;
+    final bgColor = isMe ? const Color(0xFF4A90E2) : const Color(0xFFE3E9F7);
+    final textColor = isMe ? Colors.white : const Color(0xFF333333);
     final align = isMe ? Alignment.centerRight : Alignment.centerLeft;
     final borderRadius = BorderRadius.only(
       topLeft: const Radius.circular(16),
@@ -126,9 +127,9 @@ class ChatBubble extends StatelessWidget {
           borderRadius: borderRadius,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
+              color: Colors.black.withOpacity(0.07),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -139,11 +140,13 @@ class ChatBubble extends StatelessWidget {
               message.text,
               style: TextStyle(color: textColor, fontSize: 16),
             ),
-            const SizedBox(height: 6),
-            Text(
-              DateFormat('h:mm a').format(message.timestamp),
-              style: TextStyle(color: textColor.withOpacity(0.7), fontSize: 11),
-              textAlign: TextAlign.right,
+            const SizedBox(height: 4),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                DateFormat('h:mm a').format(message.timestamp),
+                style: TextStyle(color: textColor.withOpacity(0.6), fontSize: 11),
+              ),
             ),
           ],
         ),
@@ -185,6 +188,7 @@ class _ChatInputState extends State<ChatInput> {
                 textCapitalization: TextCapitalization.sentences,
                 decoration: InputDecoration(
                   hintText: 'Type a message...',
+                  hintStyle: const TextStyle(color: Colors.grey),
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -199,6 +203,7 @@ class _ChatInputState extends State<ChatInput> {
             ),
             const SizedBox(width: 8),
             CircleAvatar(
+              radius: 24,
               backgroundColor: const Color(0xFF4A90E2),
               child: IconButton(
                 icon: const Icon(Icons.send, color: Colors.white),

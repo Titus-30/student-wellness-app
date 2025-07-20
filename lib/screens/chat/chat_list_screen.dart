@@ -16,10 +16,11 @@ class ChatListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Peer Support'),
+        centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF667EEA), Color(0xFF64B6FF)],
+              colors: [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -32,7 +33,7 @@ class ChatListScreen extends StatelessWidget {
             onPressed: () => chatProvider.loadPeers(authProvider.user?.uid ?? ''),
           ),
         ],
-        elevation: 5,
+        elevation: 6,
       ),
       body: FutureBuilder(
         future: chatProvider.loadPeers(authProvider.user?.uid ?? ''),
@@ -40,8 +41,7 @@ class ChatListScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(
-                color: Color(0xFF64B6FF),
-                strokeWidth: 4,
+                color: Color(0xFF36D1DC),
               ),
             );
           }
@@ -57,10 +57,10 @@ class ChatListScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       'Failed to load peers.',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(color: Colors.redAccent, fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Colors.redAccent,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 8),
                     Text(
@@ -73,7 +73,7 @@ class ChatListScreen extends StatelessWidget {
                       icon: const Icon(Icons.refresh),
                       label: const Text('Retry'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF64B6FF),
+                        backgroundColor: const Color(0xFF36D1DC),
                         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -98,7 +98,9 @@ class ChatListScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       'No peers available yet.',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.grey[700]),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Colors.grey[700],
+                      ),
                     ),
                     const SizedBox(height: 8),
                     const Text(
@@ -118,13 +120,16 @@ class ChatListScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final peer = chatProvider.peers[index];
               return Card(
-                elevation: 4,
+                color: const Color(0xFFF5F7FA),
+                elevation: 6,
                 margin: const EdgeInsets.symmetric(vertical: 8),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
                 child: ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   leading: CircleAvatar(
-                    backgroundColor: const Color(0xFF64B6FF),
+                    backgroundColor: const Color(0xFF36D1DC),
                     radius: 26,
                     child: Text(
                       peer.name.isNotEmpty ? peer.name[0].toUpperCase() : '',
@@ -138,14 +143,15 @@ class ChatListScreen extends StatelessWidget {
                   title: Text(
                     peer.name,
                     style: const TextStyle(
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w700,
                       fontSize: 18,
+                      color: Color(0xFF333333),
                     ),
                   ),
                   subtitle: Text(
                     'Last active: ${peer.lastActive}',
-                    style: TextStyle(
-                      color: Colors.grey[600],
+                    style: const TextStyle(
+                      color: Color(0xFF6B6E70),
                       fontSize: 14,
                     ),
                   ),
@@ -162,7 +168,7 @@ class ChatListScreen extends StatelessWidget {
                       ),
                     ),
                   )
-                      : null,
+                      : const Icon(Icons.chevron_right, color: Colors.grey),
                   onTap: () {
                     Navigator.push(
                       context,

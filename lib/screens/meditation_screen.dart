@@ -66,7 +66,7 @@ class MeditationScreen extends StatelessWidget {
 
             // User Greeting
             Text(
-              'Welcome Back\nTitus Mucyo!',
+              'Welcome Back\nGretta Varria!',
               style: theme.textTheme.headlineMedium?.copyWith(
                 fontWeight: FontWeight.bold,
                 height: 1.2,

@@ -20,21 +20,21 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
-            icon: const Icon(Icons.chat),
+            icon: const Icon(Icons.chat_bubble_outline),
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ChatListScreen()),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: GestureDetector(
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const ProfileScreen()),
               ),
               child: const CircleAvatar(
-                backgroundColor: Colors.blueAccent,
+                backgroundColor: Color(0xFF7E57C2),
                 child: Icon(Icons.person, color: Colors.white),
               ),
             ),
@@ -50,13 +50,13 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Gradient header with greeting
+                // Gradient Header
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.fromLTRB(24, 80, 24, 32),
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Color(0xFF6DC8F3), Color(0xFF73A1F9)],
+                      colors: [Color(0xFF00BFA5), Color(0xFF7E57C2)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -88,7 +88,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                // Quick Actions Grid
+
+                // Quick Action Grid
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GridView.count(
@@ -97,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 16,
-                    childAspectRatio: 1.2,
+                    childAspectRatio: 1.15,
                     children: [
                       _QuickActionCard(
                         icon: Icons.emoji_emotions,
@@ -109,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       _QuickActionCard(
-                        icon: Icons.book,
+                        icon: Icons.book_rounded,
                         label: 'Journal',
                         color: Colors.green,
                         onTap: () => Navigator.push(
@@ -120,16 +121,16 @@ class HomeScreen extends StatelessWidget {
                       _QuickActionCard(
                         icon: Icons.self_improvement,
                         label: 'Meditation',
-                        color: Colors.blue,
+                        color: Colors.teal,
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => MeditationScreen()),
                         ),
                       ),
                       _QuickActionCard(
-                        icon: Icons.chat_bubble_outline,
+                        icon: Icons.group,
                         label: 'Peer Chat',
-                        color: Colors.purple,
+                        color: Colors.deepPurple,
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const ChatListScreen()),
@@ -139,7 +140,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 32),
-                // Featured Meditation
+
+                // Featured Meditation Section
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
@@ -152,7 +154,6 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: _FeaturedMeditationCard(),
                 ),
-                const SizedBox(height: 32),
               ],
             ),
           ),
@@ -193,7 +194,7 @@ class _QuickActionCard extends StatelessWidget {
                 radius: 28,
                 child: Icon(icon, color: color, size: 32),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 14),
               Text(
                 label,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -230,11 +231,11 @@ class _FeaturedMeditationCard extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue[100],
+                  color: Colors.teal[100],
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.all(16),
-                child: const Icon(Icons.self_improvement, size: 40, color: Colors.blue),
+                child: const Icon(Icons.self_improvement, size: 40, color: Colors.teal),
               ),
               const SizedBox(width: 20),
               Expanded(
@@ -243,7 +244,9 @@ class _FeaturedMeditationCard extends StatelessWidget {
                   children: [
                     Text(
                       '5-Minute Calm',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 6),
                     Text(
@@ -253,7 +256,7 @@ class _FeaturedMeditationCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(Icons.chevron_right, color: Colors.blue),
+              const Icon(Icons.chevron_right, color: Colors.teal),
             ],
           ),
         ),

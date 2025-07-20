@@ -30,14 +30,19 @@ class _JournalScreenState extends State<JournalScreen> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Journal'),
-          elevation: 2,
-          backgroundColor: theme.primaryColor,
+          title: const Text('My Journal'),
+          elevation: 0,
+          backgroundColor: const Color(0xFF8E2DE2), // Purple gradient top color
+          centerTitle: true,
         ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue.shade50, Colors.white],
+              colors: [
+                Color(0xFF8E2DE2), // purple
+                Color(0xFF4A00E0), // deep blue
+                Color(0xFFE0F7FA), // light cyan
+              ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -45,16 +50,16 @@ class _JournalScreenState extends State<JournalScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Column(
             children: [
-              // Title input with shadow container
+              // Title input
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: const [
+                  color: Colors.white.withOpacity(0.95),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
                     BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 4,
-                      offset: Offset(0, 2),
+                      color: Colors.black12.withOpacity(0.2),
+                      blurRadius: 6,
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
@@ -62,40 +67,43 @@ class _JournalScreenState extends State<JournalScreen> {
                   controller: _titleController,
                   decoration: InputDecoration(
                     labelText: 'Title',
-                    hintText: 'Enter a title for your entry',
+                    hintText: 'Today’s headline thought...',
+                    labelStyle: TextStyle(color: Colors.deepPurple.shade700),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(20),
                       borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   ),
-                  style: theme.textTheme.titleMedium,
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.text,
                 ),
               ),
               const SizedBox(height: 20),
-              // Content input with shadow container
+
+              // Content input
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: const [
+                    color: Colors.white.withOpacity(0.95),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
                       BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 4,
-                        offset: Offset(0, 2),
+                        color: Colors.black12.withOpacity(0.2),
+                        blurRadius: 6,
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
                   child: TextField(
                     controller: _contentController,
                     decoration: InputDecoration(
-                      labelText: 'Write your thoughts...',
-                      hintText: 'What\'s on your mind today?',
+                      labelText: 'Your thoughts...',
+                      hintText: 'Reflect on your day or feelings here...',
+                      labelStyle: TextStyle(color: Colors.blueGrey.shade600),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide.none,
                       ),
                       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -104,26 +112,28 @@ class _JournalScreenState extends State<JournalScreen> {
                     maxLines: null,
                     expands: true,
                     keyboardType: TextInputType.multiline,
-                    style: theme.textTheme.bodyMedium,
+                    style: const TextStyle(fontSize: 15, height: 1.6),
                   ),
                 ),
               ),
               const SizedBox(height: 24),
+
+              // Save Button
               SizedBox(
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-                    backgroundColor: theme.primaryColor,
+                    backgroundColor: const Color(0xFF4A00E0),
                     elevation: 5,
-                    shadowColor: theme.primaryColor.withOpacity(0.4),
+                    shadowColor: Colors.deepPurpleAccent.withOpacity(0.3),
                   ),
                   onPressed: () {
                     if (_titleController.text.isNotEmpty && _contentController.text.isNotEmpty) {
                       final entry = JournalEntry(
                         id: DateTime.now().toString(),
-                        userId: 'Titus Mucyo', // Replace with actual user id
+                        userId: 'Titus Mucyo', // Replace with dynamic user ID if using Firebase Auth
                         date: DateTime.now(),
                         title: _titleController.text,
                         content: _contentController.text,
@@ -139,7 +149,7 @@ class _JournalScreenState extends State<JournalScreen> {
                   },
                   child: const Text(
                     'Save Entry',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
               ),

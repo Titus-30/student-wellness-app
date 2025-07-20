@@ -21,55 +21,70 @@ class EmergencyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF1F8F6),
       appBar: AppBar(
         title: const Text('Emergency Contacts'),
+        centerTitle: true,
+        elevation: 0,
+        foregroundColor: Colors.white,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF43A047), Color(0xFF66BB6A)],
+              colors: [Color(0xFF00BFA5), Color(0xFF4CAF50)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
         ),
-        elevation: 5,
       ),
       body: SafeArea(
-        child: ListView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-          itemCount: contacts.length,
-          itemBuilder: (context, index) {
-            final contact = contacts[index];
-            return Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-              elevation: 4,
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(16),
-                onTap: () => _callNumber(context, contact.phone),
-                child: ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  leading: const Icon(Icons.emergency, color: Colors.redAccent, size: 32),
-                  title: Text(
-                    contact.name,
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 6),
-                    child: Text(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: ListView.builder(
+            itemCount: contacts.length,
+            itemBuilder: (context, index) {
+              final contact = contacts[index];
+              return _buildContactCard(context, contact);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContactCard(BuildContext context, EmergencyContact contact) {
+    return Card(
+      elevation: 5,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: () => _callNumber(context, contact.phone),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          child: Row(
+            children: [
+              const Icon(Icons.local_hospital, color: Color(0xFF00BFA5), size: 32),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      contact.name,
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
                       contact.description,
                       style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                     ),
-                  ),
-                  trailing: Icon(
-                    Icons.phone,
-                    size: 28,
-                    color: Colors.green[700],
-                  ),
+                  ],
                 ),
               ),
-            );
-          },
+              Icon(Icons.call, size: 28, color: Colors.green[700]),
+            ],
+          ),
         ),
       ),
     );
