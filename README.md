@@ -309,6 +309,9 @@ Our app uses carefully selected colors that promote mental wellness:
 <img width="250" alt="Emergency Resources" src="https://github.com/user-attachments/assets/5d02682d-7d68-4c25-9b4d-ed0594dc191c" />
 <img width="250" alt="Settings" src="https://github.com/user-attachments/assets/905f4a0b-bdfa-4d-9909-d10d801aed1c" />
 
+### Profile Settings
+<img width="250" alt="Screenshot_20250720_021741" src="https://github.com/user-attachments/assets/043d90d2-ebc9-4e90-be91-dfefa52fa56e" />
+
 </div>
 
 > **Note:** Screenshots showcase the clean, intuitive interface designed specifically for student mental wellness needs.
